@@ -1,0 +1,1 @@
+local github init , config --global user.email & user.name , add * , commit with message , add origin , pushed to origin
