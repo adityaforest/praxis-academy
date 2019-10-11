@@ -1,0 +1,41 @@
+@echo off
+
+del /p /f /s C:\latihan2.bat
+
+dir test.bat /p /q /w
+
+echo helloworld
+
+fc /b test.bat tugas.bat
+
+find /i "helloworld" tugas.bat
+
+goto end
+echo skipthisline
+:end
+
+help goto
+
+set testVar= 1
+if %testvar% == 1 goto end
+echo testVar is not equal to 1
+:end
+
+label E:hardisk-saya
+
+md E:\testCreateDir
+mkdir E:\testCreateDir2
+
+move E:\test.bat E:\testCreateDir
+
+rd E:\testCreateDir2
+rmdir E:\testCreateDir2
+
+time /t
+
+echo windows version is
+ver
+
+vol E:
+
+PAUSE
