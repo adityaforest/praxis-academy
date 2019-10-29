@@ -41,9 +41,19 @@ public class ATMMachine
    
     public static void main(String[] args)
     {
-        Scanner x = new Scanner(System.in);
+        Scanner read = new Scanner(System.in);
+
         int select = 0;
         int choice = 0;
+
+        String testJeda; 
+        testJeda = read.nextLine();
+        // if (testJeda == '\n')
+        // {
+        //     testJeda = "haha";
+        // }
+        testJeda = read.nextLine();
+        
        
         System.out.println("====================================================");
         System.out.println("\tWelcome to this simple ATM machine");
@@ -51,7 +61,8 @@ public class ATMMachine
         System.out.println();
        
         do
-        {   try
+        {   
+            try
             {
                 do 
                 {
@@ -63,54 +74,54 @@ public class ATMMachine
                     System.out.println("\tPress [4] Exit");
                
                     System.out.print("\n\tWhat would you like to do? ");
-                    select = x.nextInt();
+                    select = read.nextInt();
    
-                        if(select>4)
-                        {
-                            System.out.println("\n\tPlease select correct transaction.");
-                        }
-                        else
-                        {
+                    if(select>4)
+                    {
+                        System.out.println("\n\tPlease select correct transaction.");
+                    }
+                    else
+                    {
                         switch (select)
                         {
                             case 1:
                                 System.out.print("\n\tEnter the amount of money to deposit: ");
-                                Deposit.deposit = x.nextDouble();
+                                Deposit.deposit = read.nextDouble();
                                 BalanceInquiry.balance = Deposit.deposit + BalanceInquiry.balance;
                                 depositMoney();
                                 break;
-                               
+                            
                             case 2:
-                               
+                            
                                 System.out.print("\n\tTo withdraw, make sure that you have sufficient balance in your account.");
                                 System.out.println();
                                 System.out.print("\tEnter amount of money to withdraw: ");
-                                Withdraw.withdraw = x.nextDouble();
+                                Withdraw.withdraw = read.nextDouble();
                                 withdrawMoney();
                                 break;
-                               
+                            
                             case 3:
                                 checkBalance();
                                 break;
-                           
+                        
                             default:
                                 System.out.print("\n\tTransaction exited.");
                                 break;
                                
                         }
-                    }               
-                          
-            }
-            while(select>4);
+                    }                         
+                }
+                while(select<4);
            
-            do {
-                try
+                do 
                 {
-                    System.out.println("\n\tWould you like to try another transaction?");
-                    System.out.println("\n\tPress [1] Yes \n\tPress [2] No");
-                    System.out.print("\tEnter choice: ");
-                    choice = x.nextInt();
-               
+                    try
+                    {
+                        System.out.println("\n\tWould you like to try another transaction?");
+                        System.out.println("\n\tPress [1] Yes \n\tPress [2] No");
+                        System.out.print("\tEnter choice: ");
+                        choice = read.nextInt();
+                
                         if(choice>2)
                         {
                             System.out.print("\n\tPlease select correct choice.");
@@ -120,21 +131,22 @@ public class ATMMachine
                     catch(Exception e)
                     {
                         System.out.println("\tError Input! Please enter a number only.");
-                        x = new Scanner(System.in);
+                        read = new Scanner(System.in);
                         System.out.println("\tEnter yout choice:");
-                        choice = x.nextInt();
+                        choice = read.nextInt();
                     }
-            } while(choice>2);
+                } 
+                while(choice>2);
+            }
+            catch(Exception e)
+            {
+                System.out.println("\tError Input! Please enter a number only.");
+                read = new Scanner(System.in);
+                System.out.println("\tEnter yout choice:");
+                select = read.nextInt();
+            }      
         }
-        catch(Exception e)
-                {
-                    System.out.println("\tError Input! Please enter a number only.");
-                    x = new Scanner(System.in);
-                    System.out.println("\tEnter yout choice:");
-                    select = x.nextInt();
-                }
-               
-        }while(choice<=1);
+        while(choice<=1);
        
         System.out.println("\n\tThank you for using this simple ATM Machine.");
     }
