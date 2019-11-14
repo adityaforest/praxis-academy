@@ -1,4 +1,4 @@
-public class JsonAndXmlParser
+public class JsonParser
 {
     public static void main (String[] args)
     {
